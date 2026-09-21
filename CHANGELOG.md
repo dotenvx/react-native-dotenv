@@ -4,6 +4,10 @@ All notable changes to this project are documented in this file.
 
 ## [Unreleased](https://github.com/dotenvx/react-native-dotenv/compare/v5.0.0...main)
 
+### Fixed
+
+- Update vulnerable `brace-expansion` and `js-yaml` dependencies to patched versions and raise the `brace-expansion` override minimum to 5.0.9.
+
 ## [5.0.0](https://github.com/dotenvx/react-native-dotenv/compare/v4.1.1...v5.0.0) (2026-09-21)
 
 ### Added
