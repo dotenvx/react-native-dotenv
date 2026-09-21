@@ -1,6 +1,6 @@
 {
   "name": "react-native-dotenv",
-  "version": "5.0.0",
+  "version": "6.0.0",
   "description": "Load .env into React Native with import statements. A Babel plugin that inlines environment variables at build time.",
   "repository": {
     "type": "git",
