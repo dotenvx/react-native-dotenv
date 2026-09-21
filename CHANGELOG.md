@@ -2,7 +2,17 @@
 
 All notable changes to this project are documented in this file.
 
-## [Unreleased](https://github.com/dotenvx/react-native-dotenv/compare/v4.1.1...main)
+## [Unreleased](https://github.com/dotenvx/react-native-dotenv/compare/v5.0.0...main)
+
+### Fixed
+
+- Update vulnerable `brace-expansion` and `js-yaml` dependencies to patched versions and raise the `brace-expansion` override minimum to 5.0.9.
+
+## [5.0.0](https://github.com/dotenvx/react-native-dotenv/compare/v4.1.1...v5.0.0) (2026-09-21)
+
+### Added
+
+- Add support for `dotenv run` to share environment variables between build tooling and `@env` imports, including file precedence, safe mode, and Metro restart requirements.
 
 ## [4.1.1](https://github.com/dotenvx/react-native-dotenv/compare/v4.1.0...v4.1.1) (2026-07-28)
 
