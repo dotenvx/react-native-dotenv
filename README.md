@@ -56,6 +56,51 @@ That's it. Your environment variables from `.env` are available via `@env`!
 
 ## Advanced
 
+<details><summary>with the dotenv CLI</summary><br>
+
+Use dotenv v18's `dotenv run` command when you want the same environment variables available to build tooling and your app's `@env` imports. The Babel plugin still inlines values into the app at build time.
+
+Install dotenv directly so your package manager makes its CLI available to your project scripts:
+
+```sh
+npm install --save-dev dotenv@^18.0.1
+```
+
+Select a file when starting Metro:
+
+```json
+{
+  "scripts": {
+    "start:staging": "dotenv run -f .env.staging -- react-native start --reset-cache"
+  }
+}
+```
+
+```ini
+# .env.staging
+API_URL=https://staging.example.org
+```
+
+Keep the Babel plugin configured as shown in Usage, then import normally:
+
+```js
+import { API_URL } from '@env'
+
+fetch(`${API_URL}/users`)
+```
+
+The CLI loads the selected file into the process environment before Metro starts. Existing shell/CI values win unless you pass `--override` to `dotenv run`. The plugin then gives non-empty process environment values priority over its own `.env` files.
+
+The plugin still loads its usual files; `-f` selects the CLI's file, not the plugin's `path` or `APP_ENV`. This can change precedence: plain `dotenv run` loads `.env` into the process environment, so those values win over the plugin's `.env.local` values. Use the CLI when you intend its injected values to take priority.
+
+With the default `safe: false`, keys loaded only by the CLI work through `@env` imports. With `safe: true`, those keys must also appear in files the plugin reads. Likewise, `process.env.X` is only inlined for keys in the plugin's files (plus `NODE_ENV`, `BABEL_ENV`, and `envName`).
+
+Stop Metro and rerun the script after changing CLI-loaded values; its process environment is set at startup. The script resets Metro's cache when restarting.
+
+The CLI is optional. For values used only by app code, the Babel plugin can continue loading `.env` files on its own.
+
+</details>
+
 <details><summary>with Expo 🧭</summary><br>
 
 ```js
