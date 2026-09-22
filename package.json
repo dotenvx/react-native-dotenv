@@ -29,7 +29,7 @@
     "dotenv": "^18.0.1"
   },
   "devDependencies": {
-    "@babel/core": "^7.29.7",
+    "@babel/core": "^8.0.6",
     "jest": "30.4.2",
     "standard": "^17.1.2"
   },
